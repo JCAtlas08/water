@@ -72,10 +72,12 @@ public class WaterFlowing {
         if (map[row][col - 1] < here) {
             left = true;
         }
-        if (up || right || down || left) {
-            return canFlowOff(map, row - 1, col) || canFlowOff(map, row, col + 1) || canFlowOff(map, row + 1, col) || canFlowOff(map, row, col - 1);
-        }
+        
+        return ((up && canFlowOff(map, row - 1, col)) 
+            || (right && canFlowOff(map, row, col + 1)) 
+            || (down && canFlowOff(map, row + 1, col)) 
+            || (left && canFlowOff(map, row, col - 1))
+        );
 
-        return false;
     }
 }
